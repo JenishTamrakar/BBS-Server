@@ -10,7 +10,7 @@ public class Server {
         try {
             RegisterDao rd= new RegisterDaoImpl();
             Registry registry = LocateRegistry.createRegistry(1099);
-            registry.rebind("StudentRegister", rd);
+            registry.rebind("Register", rd);
             System.out.print("Server Started");
         } catch (Exception ex) {
             ex.printStackTrace();
