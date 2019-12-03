@@ -1,7 +1,3 @@
-//server
-//StudentDaoImpl
-
-
 package daoImpl;
 
 import bll.Student;
