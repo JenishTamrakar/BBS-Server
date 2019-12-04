@@ -26,7 +26,9 @@ public class LoginDaoImpl extends UnicastRemoteObject implements LoginDao{
             ps.setString(1,user_id);
             ps.setString(2,user_password);
             ResultSet rs = ps.executeQuery();
+            System.out.println(rs);
             return  rs.next();
+
         } catch (Exception e) {
             System.out.println("exception"+e);
             return null;
