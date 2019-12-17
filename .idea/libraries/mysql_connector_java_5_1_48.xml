@@ -2,6 +2,7 @@
   <library name="mysql-connector-java-5.1.48">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/../Bulletin-Board-System/driver/mysql-connector-java-5.1.48.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Bulletin-Board-System/driver/jfoenix-8.0.8.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

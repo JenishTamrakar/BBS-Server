@@ -13,8 +13,9 @@ public class Server {
             StudentDao sd = new StudentDaoImpl();
             FacultyDao fd = new FacultyDaoImpl();
             NoticeDao nd = new NoticeDaoImpl();
-            CreateEventDao ced = new CreateEventDaoImpl();
+            EventDao ed = new EventDaoImpl();
             FeeDetailsDao fdd = new FeeDetailsImpl();
+            AssignmentDao ad = new AssignmentDaoImpl();
 
             Registry registry = LocateRegistry.createRegistry(1099);
             registry.rebind("Register", rd);
@@ -23,7 +24,8 @@ public class Server {
             registry.rebind("Faculty", fd);
             registry.rebind("Notice", nd);
             registry.rebind("FeeDetails", fdd);
-            registry.rebind("CreateEvent",ced);
+            registry.rebind("Event",ed);
+            registry.rebind("Assignment", ad);
             System.out.print("Server Started");
         } catch (Exception ex) {
             ex.printStackTrace();
