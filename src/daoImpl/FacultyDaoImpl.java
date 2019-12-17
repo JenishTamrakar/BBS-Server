@@ -1,6 +1,7 @@
 package daoImpl;
 
 import bll.Faculty;
+import com.sun.rowset.CachedRowSetImpl;
 import dao.FacultyDao;
 import utils.DbConnection;
 
@@ -8,6 +9,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class FacultyDaoImpl extends UnicastRemoteObject implements FacultyDao
@@ -20,12 +22,12 @@ public class FacultyDaoImpl extends UnicastRemoteObject implements FacultyDao
     }
 
     @Override
-    public void addStudent(Faculty f)throws RemoteException
+    public void addFaculty(Faculty f)throws RemoteException
     {
-        System.out.print(f.getFaculty_ID());
-        System.out.print(f.getName());
-        System.out.print(f.getEmail());
-        System.out.print(f.getCourse());
+//        System.out.print(f.getFaculty_ID());
+//        System.out.print(f.getName());
+//        System.out.print(f.getEmail());
+//        System.out.print(f.getCourse());
 
         try
         {
@@ -41,5 +43,59 @@ public class FacultyDaoImpl extends UnicastRemoteObject implements FacultyDao
         {
             System.out.println(e);
         }
+    }
+
+    @Override
+    public void updateFaculty(Faculty f)throws RemoteException
+    {
+        try
+        {
+            String sql = "UPDATE faculty set faculty_id = ?, faculty_name = ?, faculty_email = ?, faculty_course = ? where faculty_sn = ?";
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setString(1, f.getFaculty_ID());
+            ps.setString(2, f.getName());
+            ps.setString(3, f.getEmail());
+            ps.setString(4, f.getCourse());
+            ps.setString(5, f.getFaculty_SN());
+            ps.executeUpdate();
+//            System.out.println(ps);
+        }
+        catch (SQLException e)
+        {
+            System.out.println(e);
+        }
+    }
+
+    @Override
+    public void deleteFaculty(Faculty f)throws RemoteException
+    {
+        try
+        {
+            String sql = "DELETE from faculty where faculty_sn = ?";
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setString(1, f.getFaculty_SN());
+            ps.executeUpdate();
+//            System.out.println(ps);
+        }
+        catch (SQLException e)
+        {
+            System.out.println(e);
+        }
+    }
+
+    public ResultSet getFacultyRecords() throws RemoteException{
+        try
+        {
+            ResultSet rs = cn.createStatement().executeQuery("select faculty_sn, faculty_id, faculty_name, faculty_course, faculty_email from faculty");
+            CachedRowSetImpl crsi = new CachedRowSetImpl();
+            crsi.populate(rs);
+            return crsi;
+        }
+
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        return null;
     }
 }
