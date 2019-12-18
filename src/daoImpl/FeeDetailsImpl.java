@@ -1,15 +1,13 @@
 package daoImpl;
 
 import bll.FeeDetails;
+import com.sun.rowset.CachedRowSetImpl;
 import dao.FeeDetailsDao;
 import utils.DbConnection;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class FeeDetailsImpl extends UnicastRemoteObject implements FeeDetailsDao
 {
@@ -38,4 +36,61 @@ public class FeeDetailsImpl extends UnicastRemoteObject implements FeeDetailsDao
             System.out.println(e);
         }
     }
+
+    @Override
+    public void updateFeeDet(FeeDetails fd)throws RemoteException
+    {
+        try
+        {
+            String sql = "UPDATE feedetails set fee_amount = ?, fee_deadline_date = ?, fee_details = ?, student_course=?, student_level = ? where fee_id = ?";
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setString(1, fd.getFee_Amt());
+            ps.setString(2, fd.getDeadline_Date().toString());
+            ps.setString(3, fd.getFee_Details());
+            ps.setString(4, fd.getStudent_course());
+            ps.setString(5, fd.getStudent_level());
+            ps.setString(6, fd.getFee_ID());
+            ps.executeUpdate();
+//            System.out.println(ps);
+        }
+        catch (SQLException e)
+        {
+            System.out.println(e);
+        }
+    }
+
+    @Override
+    public void deleteFeeDet(FeeDetails fd)throws RemoteException
+    {
+        try
+        {
+            String sql = "DELETE from feedetails where fee_id = ?";
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setString(1, fd.getFee_ID());
+            ps.executeUpdate();
+//            System.out.println(ps);
+        }
+        catch (SQLException e)
+        {
+            System.out.println(e);
+        }
+    }
+
+    public ResultSet getFeeDetails() throws RemoteException{
+        try
+        {
+            ResultSet rs = cn.createStatement().executeQuery("select fee_id, fee_amount, fee_deadline_date, fee_details, student_course, student_level from feedetails");
+            CachedRowSetImpl crsi = new CachedRowSetImpl();
+            crsi.populate(rs);
+            return crsi;
+        }
+
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+
 }
