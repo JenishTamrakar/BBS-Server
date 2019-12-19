@@ -24,12 +24,6 @@ public class StudentDaoImpl extends UnicastRemoteObject implements StudentDao
     @Override
     public void addStudent(Student s)throws RemoteException
     {
-//        System.out.print(s.getStudent_ID());
-//        System.out.print(s.getName());
-//        System.out.print(s.getEmail());
-//        System.out.print(s.getCourse());
-//        System.out.print(s.getLevel());
-
         try
         {
             String sql = "INSERT INTO student(student_id, student_name, student_email, student_course, student_level) VALUES(?, ?, ?, ?, ?)";
@@ -78,7 +72,6 @@ public class StudentDaoImpl extends UnicastRemoteObject implements StudentDao
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setString(1, s.getStudent_SN());
             ps.executeUpdate();
-//            System.out.println(ps);
         }
         catch (SQLException e)
         {

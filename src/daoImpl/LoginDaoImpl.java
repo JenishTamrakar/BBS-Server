@@ -25,9 +25,6 @@ public class LoginDaoImpl extends UnicastRemoteObject implements LoginDao{
             System.out.println("Login method called");
             String sql ="SELECT * from user";
             PreparedStatement ps = cn.prepareStatement(sql);
-
-
-
             ResultSet rs = ps.executeQuery();
             CachedRowSetImpl crs= new CachedRowSetImpl();
             crs.populate(rs);
