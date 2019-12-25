@@ -15,13 +15,13 @@ public class Event implements Serializable
     private static final  long serialVersionUID=1L;
 
     public Event(String Event_ID, String Event_title, String Event_date, String Event_time, String Event_desc)
-    {
-        this.Event_ID = Event_ID;
-        this.Event_title = Event_title;
-        this.Event_date = Event_date;
-        this.Event_time = Event_time;
-        this.Event_desc = Event_desc;
-    }
+{
+    this.Event_ID = Event_ID;
+    this.Event_title = Event_title;
+    this.Event_date = Event_date;
+    this.Event_time = Event_time;
+    this.Event_desc = Event_desc;
+}
 
     public Event() {
 
