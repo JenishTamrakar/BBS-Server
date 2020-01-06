@@ -13,11 +13,10 @@ public class changePasswordImpl extends UnicastRemoteObject implements changePas
     public changePasswordImpl()throws RemoteException{
         super();
     }
+
     @Override
     public void updatePassword(changePassword cp)throws RemoteException{
-//        try {
-////            String sql = ""
-//        }
+
 
     }
 }

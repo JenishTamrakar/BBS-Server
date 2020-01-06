@@ -21,7 +21,7 @@ public class signUpDaoImpl extends UnicastRemoteObject implements signUpDao {
     public ResultSet checkID(String user_id)throws RemoteException{
         try {
             System.out.printf("uid checking");
-            ResultSet rs = cn.createStatement().executeQuery("SELECT user_id from user");
+            ResultSet rs = cn.createStatement().executeQuery("SELECT * from user");
             CachedRowSetImpl crsi = new CachedRowSetImpl();
             crsi.populate(rs);
             return crsi;

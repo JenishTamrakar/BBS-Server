@@ -6,4 +6,7 @@ import java.sql.ResultSet;
 
 public interface LoginDao extends Remote {
     ResultSet checkUser(String user_id, String user_password) throws RemoteException;
+
+    ResultSet getStudentInfo(int uid) throws  RemoteException;
+//    ResultSet getUserInfo(String uid) throws RemoteException;
 }

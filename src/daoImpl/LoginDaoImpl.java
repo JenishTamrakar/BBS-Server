@@ -35,4 +35,21 @@ public class LoginDaoImpl extends UnicastRemoteObject implements LoginDao{
         }
         return null;
     }
+
+    @Override
+    public ResultSet getStudentInfo(int uid) throws  RemoteException{
+        try{
+            String sql = "Select * form student where UID =? ";
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setString(1, String.valueOf(uid));
+            ResultSet rs = ps.executeQuery();
+            CachedRowSetImpl crc= new CachedRowSetImpl();
+            crc.populate(rs);
+            return crc;
+
+        }catch (Exception e){
+
+            System.out.println(e);
+        }return  null;
+    }
 }
