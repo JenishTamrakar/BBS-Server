@@ -94,4 +94,22 @@ public class StudentDaoImpl extends UnicastRemoteObject implements StudentDao
         }
         return null;
     }
+
+    @Override
+    public ResultSet getProfile(String user_id) throws RemoteException {
+        try
+        {
+            ResultSet rs = cn.createStatement().executeQuery("select student_sn, student_id, student_name, student_course, student_email, student_level from student WHERE student_id = "+user_id);
+
+            CachedRowSetImpl crsi = new CachedRowSetImpl();
+            crsi.populate(rs);
+            return crsi;
+        }
+
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        return null;
+    }
 }

@@ -2,7 +2,7 @@ package bll;
 
 import java.io.Serializable;
 
-public class Faculty implements Serializable
+public class Faculty implements giSerializable
 {
     private String faculty_SN;
     private String faculty_ID;
@@ -75,13 +75,13 @@ public class Faculty implements Serializable
         this.course = course;
     }
 
-    public Faculty(String faculty_SN, String faculty_ID, String name,String pass
-            , String course, String email)
+
+    public Faculty(String faculty_SN, String faculty_ID, String name, String course, String email)
     {
         this.faculty_SN = faculty_SN;
         this.faculty_ID = faculty_ID;
         this.name = name;
-        this.pass = pass;
+        //this.pass = pass;
         this.course = course;
         this.email = email;
     }
