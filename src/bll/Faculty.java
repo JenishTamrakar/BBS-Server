@@ -81,7 +81,7 @@ public class Faculty implements Serializable
         this.faculty_SN = faculty_SN;
         this.faculty_ID = faculty_ID;
         this.name = name;
-        //this.pass = pass;
+
         this.course = course;
         this.email = email;
     }
