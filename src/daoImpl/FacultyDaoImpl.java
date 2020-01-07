@@ -102,7 +102,6 @@ public class FacultyDaoImpl extends UnicastRemoteObject implements FacultyDao
         {
             ResultSet rs = cn.createStatement().executeQuery("select faculty_sn, faculty_id, faculty_name, " +
                     "faculty_course, faculty_email from faculty WHERE faculty_id = "+user_id);
-
             CachedRowSetImpl crsi = new CachedRowSetImpl();
             crsi.populate(rs);
             return crsi;
