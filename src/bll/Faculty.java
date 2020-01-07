@@ -18,6 +18,7 @@ public class Faculty implements Serializable
 
     }
 
+
     public String getFaculty_SN()
     {
         return faculty_SN;
