@@ -21,10 +21,11 @@ public class RegisterDaoImpl extends UnicastRemoteObject implements RegisterDao 
         System.out.print(r.getPassword());
 
         try {
-            String sql = "INSERT INTO user(user_id, user_password) VALUES(?,?)";
+            String sql = "INSERT INTO user(user_id, user_password, user_role) VALUES(?,?,?)";
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setString(1, r.getUID());
             ps.setString(2, r.getPassword());
+            ps.setString(3, r.getUserType());
             ps.executeUpdate();
         }
         catch (SQLException e){

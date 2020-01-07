@@ -18,7 +18,7 @@ public class viewFeedbackImpl extends UnicastRemoteObject implements viewFeedbac
     @Override
     public ResultSet getFeedback() throws RemoteException{
         try {
-            ResultSet rs =cn.createStatement().executeQuery("SELECT * from feedback");
+            ResultSet rs =cn.createStatement().executeQuery("SELECT * from feedback order by feedback_date desc");
             CachedRowSetImpl crs= new CachedRowSetImpl();
             crs.populate(rs);
             return crs;

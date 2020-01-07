@@ -7,10 +7,16 @@ public class Faculty implements Serializable
     private String faculty_SN;
     private String faculty_ID;
     private String name;
+    private  String pass;
     private String email;
     private String course;
 
     private static final long serialVersionUID = 1L;
+
+    public Faculty()
+    {
+
+    }
 
     public String getFaculty_SN()
     {
@@ -35,6 +41,13 @@ public class Faculty implements Serializable
     public String getName()
     {
         return name;
+    }
+    public String getPass()
+    {
+        return pass;
+    }
+    public void setPass(String pass){
+        this.pass = pass;
     }
 
     public void setName(String name)
@@ -62,12 +75,16 @@ public class Faculty implements Serializable
         this.course = course;
     }
 
-    public Faculty(String faculty_ID, String name, String course, String email)
+    public Faculty(String faculty_SN, String faculty_ID, String name,String pass
+            , String course, String email)
     {
+        this.faculty_SN = faculty_SN;
         this.faculty_ID = faculty_ID;
         this.name = name;
+        this.pass = pass;
         this.course = course;
         this.email = email;
     }
+
 
 }
