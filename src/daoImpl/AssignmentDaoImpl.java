@@ -89,4 +89,20 @@ public class AssignmentDaoImpl extends UnicastRemoteObject implements Assignment
         }
         return null;
     }
+
+    public ResultSet getAssignDetailsByCourseAndLevel(String course, String level) throws RemoteException{
+        try
+        {
+            ResultSet rs = cn.createStatement().executeQuery("select assignment_id, assignment_title, assignment_level, assignment_course, assignment_unit, assignment_deadline_date from assignment where assignment_course = '"+course+"' and assignment_level ="+level+"");
+            CachedRowSetImpl crsi = new CachedRowSetImpl();
+            crsi.populate(rs);
+            return crsi;
+        }
+
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        return null;
+    }
 }

@@ -2,7 +2,7 @@ package bll;
 
 import java.io.Serializable;
 
-public class Faculty implements giSerializable
+public class Faculty implements Serializable
 {
     private String faculty_SN;
     private String faculty_ID;

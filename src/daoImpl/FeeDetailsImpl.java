@@ -92,5 +92,24 @@ public class FeeDetailsImpl extends UnicastRemoteObject implements FeeDetailsDao
         return null;
     }
 
+    public ResultSet getFeeDetailsByCourse(String course) throws RemoteException{
+        try
+        {
+//            System.out.println("Student Course = "+course);
+            ResultSet rs = cn.createStatement().executeQuery("select fee_id, fee_amount, fee_deadline_date, fee_details, student_course, student_level from feedetails where student_course = '"+course+"'");
+
+//            ResultSet rs = cn.createStatement().executeQuery("select fee_id, fee_amount, fee_deadline_date, fee_details, student_course, student_level from feedetails where student_course ="+course);
+            CachedRowSetImpl crsi = new CachedRowSetImpl();
+            crsi.populate(rs);
+            return crsi;
+        }
+
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        return null;
+    }
+
 
 }
