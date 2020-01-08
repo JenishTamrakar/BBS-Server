@@ -95,6 +95,38 @@ public class StudentDaoImpl extends UnicastRemoteObject implements StudentDao
         return null;
     }
 
+    public ResultSet getStudentRecordsByCourse() throws RemoteException{
+        try
+        {
+            ResultSet rs = cn.createStatement().executeQuery("select student_course, count(student_course) as total from student group by student_course");
+            CachedRowSetImpl crsi = new CachedRowSetImpl();
+            crsi.populate(rs);
+            return crsi;
+        }
+
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    public ResultSet getStudentRecordsByLevel() throws RemoteException{
+        try
+        {
+            ResultSet rs = cn.createStatement().executeQuery("select student_level, count(student_level) as total from student group by student_level");
+            CachedRowSetImpl crsi = new CachedRowSetImpl();
+            crsi.populate(rs);
+            return crsi;
+        }
+
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        return null;
+    }
+
     @Override
     public ResultSet getProfile(String user_id) throws RemoteException {
         try

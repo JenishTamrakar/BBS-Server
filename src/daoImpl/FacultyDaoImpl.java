@@ -96,6 +96,23 @@ public class FacultyDaoImpl extends UnicastRemoteObject implements FacultyDao
         }
         return null;
     }
+
+    public ResultSet getFacultyRecordsByCourse() throws RemoteException{
+        try
+        {
+            ResultSet rs = cn.createStatement().executeQuery("select faculty_course, count(faculty_course) as total from faculty group by faculty_course");
+            CachedRowSetImpl crsi = new CachedRowSetImpl();
+            crsi.populate(rs);
+            return crsi;
+        }
+
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        return null;
+    }
+
     @Override
     public ResultSet getProfile(String user_id) throws RemoteException {
         try
