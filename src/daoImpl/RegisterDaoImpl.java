@@ -33,4 +33,20 @@ public class RegisterDaoImpl extends UnicastRemoteObject implements RegisterDao 
         }
     }
 
+    public void updatePassword(String user_id, String user_password) throws RemoteException
+    {
+        try
+        {
+            String sql = "UPDATE user set user_password = ? where user_id = ?";
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setString(1, user_password );
+            ps.setString(2, user_id);
+            ps.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            System.out.println(e);
+        }
+    }
+
 }
