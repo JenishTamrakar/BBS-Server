@@ -33,7 +33,7 @@ public class StudentDaoImpl extends UnicastRemoteObject implements StudentDao
             ps.setString(3, s.getEmail());
             ps.setString(4, s.getCourse());
             ps.setString(5, s.getLevel());
-            ps.executeQuery();
+            ps.executeUpdate();
         }
         catch (SQLException e)
         {

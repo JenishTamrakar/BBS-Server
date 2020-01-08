@@ -23,8 +23,10 @@ public class LoginDaoImpl extends UnicastRemoteObject implements LoginDao{
     public ResultSet checkUser(String user_id,String user_password) throws RemoteException{
         try {
             System.out.println("Login method called");
-            String sql ="SELECT * from user";
+            String sql ="SELECT * from user where user_id=? and user_password=?";
             PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setString(1,user_id);
+            ps.setString(2,user_password);
             ResultSet rs = ps.executeQuery();
             CachedRowSetImpl crs= new CachedRowSetImpl();
             crs.populate(rs);
