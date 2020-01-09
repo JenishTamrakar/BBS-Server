@@ -14,25 +14,29 @@ import java.sql.SQLException;
 
 public class FacultyDaoImpl extends UnicastRemoteObject implements FacultyDao
 {
+    //database connection
     Connection cn = DbConnection.myConnection();
 
+    //constructor
     public  FacultyDaoImpl()throws RemoteException
     {
         super();
     }
 
+    /**
+     * add faculty details into the faculty table
+     * @param f
+     * @throws RemoteException
+     */
     @Override
     public void addFaculty(Faculty f)throws RemoteException
     {
-
-
         try
         {
             String sql = "INSERT INTO faculty(faculty_id, faculty_name, faculty_email, faculty_course) VALUES(?, ?, ?, ?)";
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setString(1, f.getFaculty_ID());
             ps.setString(2, f.getName());
-
             ps.setString(3, f.getEmail());
             ps.setString(4, f.getCourse());
             ps.executeUpdate();
@@ -43,6 +47,11 @@ public class FacultyDaoImpl extends UnicastRemoteObject implements FacultyDao
         }
     }
 
+    /**
+     * update event details into the event table
+     * @param f
+     * @throws RemoteException
+     */
     @Override
     public void updateFaculty(Faculty f)throws RemoteException
     {
@@ -52,7 +61,6 @@ public class FacultyDaoImpl extends UnicastRemoteObject implements FacultyDao
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setString(1, f.getFaculty_ID());
             ps.setString(2, f.getName());
-
             ps.setString(3, f.getEmail());
             ps.setString(4, f.getCourse());
             ps.executeUpdate();
@@ -64,6 +72,11 @@ public class FacultyDaoImpl extends UnicastRemoteObject implements FacultyDao
         }
     }
 
+    /**
+     * delete event details from event table
+     * @param f
+     * @throws RemoteException
+     */
     @Override
     public void deleteFaculty(Faculty f)throws RemoteException
     {
@@ -81,6 +94,11 @@ public class FacultyDaoImpl extends UnicastRemoteObject implements FacultyDao
         }
     }
 
+    /**
+     * retrieve faculty records from the faculty table
+     * @return
+     * @throws RemoteException
+     */
     public ResultSet getFacultyRecords() throws RemoteException{
         try
         {
@@ -97,6 +115,11 @@ public class FacultyDaoImpl extends UnicastRemoteObject implements FacultyDao
         return null;
     }
 
+    /**
+     * retrieve faculty data from faculty table by course
+     * @return
+     * @throws RemoteException
+     */
     public ResultSet getFacultyRecordsByCourse() throws RemoteException{
         try
         {
@@ -113,6 +136,12 @@ public class FacultyDaoImpl extends UnicastRemoteObject implements FacultyDao
         return null;
     }
 
+    /**
+     * retrieve faculty data for profile by the logged in user ID
+     * @param user_id
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public ResultSet getProfile(String user_id) throws RemoteException {
         try

@@ -14,15 +14,21 @@ import java.sql.SQLException;
 
 
 public  class  NoticeDaoImpl extends UnicastRemoteObject implements NoticeDao{
-Connection cn = DbConnection.myConnection();
-public NoticeDaoImpl()throws RemoteException{
-    super();
-}
+    //database connection
+    Connection cn = DbConnection.myConnection();
+
+    //constructor
+    public NoticeDaoImpl()throws RemoteException{
+        super();
+    }
+
+    /**
+     * add notice into the notice table
+     * @param n
+     * @throws RemoteException
+     */
     @Override
     public void addNotice(Notice n) throws RemoteException {
-//        System.out.println(n.getNoticeTitle());
-//        System.out.println(n.getNoticeDate());
-//        System.out.println(n.getNoticeDescription());
         try {
             String sql ="INSERT INTO notice(notice_title, notice_description, notice_date) VALUES(?,?,?)";
             PreparedStatement ps = cn.prepareStatement(sql);
@@ -38,6 +44,11 @@ public NoticeDaoImpl()throws RemoteException{
 
     }
 
+    /**
+     * update notice details from notice table
+     * @param n
+     * @throws RemoteException
+     */
     @Override
     public void updateNotice(Notice n)throws RemoteException
     {
@@ -57,6 +68,11 @@ public NoticeDaoImpl()throws RemoteException{
         }
     }
 
+    /**
+     * delete notice details from notice table
+     * @param n
+     * @throws RemoteException
+     */
     @Override
     public void deleteNotice(Notice n)throws RemoteException
     {
@@ -73,6 +89,11 @@ public NoticeDaoImpl()throws RemoteException{
         }
     }
 
+    /**
+     * retrieve notice details from the notice table
+     * @return
+     * @throws RemoteException
+     */
     public ResultSet getNoticeDetails() throws RemoteException{
         try
         {

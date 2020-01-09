@@ -11,10 +11,19 @@ import java.sql.*;
 import java.time.LocalDate;
 
 public class viewFeedbackImpl extends UnicastRemoteObject implements viewFeedbackDao {
+    //database connection
     Connection cn = DbConnection.myConnection();
+
+    //constructor
     public  viewFeedbackImpl() throws RemoteException{
         super();
     }
+
+    /**
+     * retrieve feedback details from the feedback table
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public ResultSet getFeedback() throws RemoteException{
         try {
@@ -28,6 +37,12 @@ public class viewFeedbackImpl extends UnicastRemoteObject implements viewFeedbac
         }
         return null;
     }
+
+    /**
+     * add feedback details into the feedback table
+     * @param vf
+     * @throws RemoteException
+     */
     @Override
     public void addFeedback(viewFeedback vf) throws RemoteException{
         try {

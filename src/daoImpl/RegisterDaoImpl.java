@@ -11,10 +11,19 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class RegisterDaoImpl extends UnicastRemoteObject implements RegisterDao {
+    //database connection
     Connection cn = DbConnection.myConnection();
+
+    //constructor
     public  RegisterDaoImpl()throws RemoteException{
         super();
     }
+
+    /**
+     * add user data into the user table
+     * @param r
+     * @throws RemoteException
+     */
     @Override
     public void addUser(Register r)throws RemoteException{
         System.out.print(r.getUID());
@@ -33,6 +42,12 @@ public class RegisterDaoImpl extends UnicastRemoteObject implements RegisterDao 
         }
     }
 
+    /**
+     * update user password into the user table
+     * @param user_id
+     * @param user_password
+     * @throws RemoteException
+     */
     public void updatePassword(String user_id, String user_password) throws RemoteException
     {
         try

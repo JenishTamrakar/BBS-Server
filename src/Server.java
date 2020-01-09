@@ -9,6 +9,8 @@ public class Server {
 
     public static void main(String[] args) {
         try {
+
+            //Creating objects of the interfaces
             RegisterDao rd= new RegisterDaoImpl();
             LoginDao ld = new LoginDaoImpl();
             StudentDao sd = new StudentDaoImpl();
@@ -22,6 +24,7 @@ public class Server {
             changePasswordDao cpd = new changePasswordImpl();
 
 
+            //creating registry and rebind
             Registry registry = LocateRegistry.createRegistry(1099);
             registry.rebind("Register", rd);
             registry.rebind("Login",ld);

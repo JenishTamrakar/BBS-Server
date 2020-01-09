@@ -11,12 +11,20 @@ import java.sql.*;
 
 public class EventDaoImpl extends UnicastRemoteObject implements EventDao
 {
+    //connection with database
     Connection cn = DbConnection.myConnection();
 
+    //constructor
     public  EventDaoImpl() throws RemoteException
     {
         super();
     }
+
+    /**
+     * Add event details into the event table
+     * @param ev
+     * @throws RemoteException
+     */
     public void addEventDet(Event ev) throws RemoteException
     {
         try
@@ -35,6 +43,11 @@ public class EventDaoImpl extends UnicastRemoteObject implements EventDao
         }
     }
 
+    /**
+     * update event details into the event table
+     * @param ev
+     * @throws RemoteException
+     */
     @Override
     public void updateEventDet(Event ev)throws RemoteException
     {
@@ -56,6 +69,12 @@ public class EventDaoImpl extends UnicastRemoteObject implements EventDao
         }
     }
 
+
+    /**
+     * delete event details from event table
+     * @param ev
+     * @throws RemoteException
+     */
     @Override
     public void deleteEventDet(Event ev)throws RemoteException
     {
@@ -73,6 +92,11 @@ public class EventDaoImpl extends UnicastRemoteObject implements EventDao
         }
     }
 
+    /**
+     * retrieve event details from event table
+     * @return
+     * @throws RemoteException
+     */
     public ResultSet getEventDetails() throws RemoteException{
         try
         {

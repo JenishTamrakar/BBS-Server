@@ -14,13 +14,20 @@ import java.sql.SQLException;
 
 public class StudentDaoImpl extends UnicastRemoteObject implements StudentDao
 {
+    //database connection
     Connection cn = DbConnection.myConnection();
 
-    public  StudentDaoImpl()throws RemoteException
+    //constructor
+    public StudentDaoImpl()throws RemoteException
     {
         super();
     }
 
+    /**
+     * add student details into the student table
+     * @param s
+     * @throws RemoteException
+     */
     @Override
     public void addStudent(Student s)throws RemoteException
     {
@@ -41,6 +48,11 @@ public class StudentDaoImpl extends UnicastRemoteObject implements StudentDao
         }
     }
 
+    /**
+     * update student details into the student table
+     * @param s
+     * @throws RemoteException
+     */
     @Override
     public void updateStudent(Student s)throws RemoteException
     {
@@ -63,6 +75,11 @@ public class StudentDaoImpl extends UnicastRemoteObject implements StudentDao
         }
     }
 
+    /**
+     * delete student details from the student table
+     * @param s
+     * @throws RemoteException
+     */
     @Override
     public void deleteStudent(Student s)throws RemoteException
     {
@@ -79,6 +96,11 @@ public class StudentDaoImpl extends UnicastRemoteObject implements StudentDao
         }
     }
 
+    /**
+     * retrieve student details from the student table
+     * @return
+     * @throws RemoteException
+     */
     public ResultSet getStudentRecords() throws RemoteException{
         try
         {
@@ -95,6 +117,11 @@ public class StudentDaoImpl extends UnicastRemoteObject implements StudentDao
         return null;
     }
 
+    /**
+     * retrieve student details from student table by course
+     * @return
+     * @throws RemoteException
+     */
     public ResultSet getStudentRecordsByCourse() throws RemoteException{
         try
         {
@@ -111,6 +138,11 @@ public class StudentDaoImpl extends UnicastRemoteObject implements StudentDao
         return null;
     }
 
+    /**
+     * retrieve student details from student table by level
+     * @return
+     * @throws RemoteException
+     */
     public ResultSet getStudentRecordsByLevel() throws RemoteException{
         try
         {
@@ -127,6 +159,12 @@ public class StudentDaoImpl extends UnicastRemoteObject implements StudentDao
         return null;
     }
 
+    /**
+     * retrieve student data for profile by the logged in user ID
+     * @param user_id
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public ResultSet getProfile(String user_id) throws RemoteException {
         try

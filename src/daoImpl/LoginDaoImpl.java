@@ -14,11 +14,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginDaoImpl extends UnicastRemoteObject implements LoginDao{
+    //datbase connection
     Connection cn = DbConnection.myConnection();
+
+    //constructor
     public LoginDaoImpl() throws RemoteException{
         super();
     }
 
+    /**
+     * check user id and password from the user table
+     * @param user_id
+     * @param user_password
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public ResultSet checkUser(String user_id,String user_password) throws RemoteException{
         try {
@@ -38,6 +48,12 @@ public class LoginDaoImpl extends UnicastRemoteObject implements LoginDao{
         return null;
     }
 
+    /**
+     * select student from the student id
+     * @param uid
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public ResultSet getStudentInfo(int uid) throws  RemoteException{
         try{

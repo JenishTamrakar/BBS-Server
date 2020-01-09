@@ -11,13 +11,20 @@ import java.sql.*;
 
 public class FeeDetailsImpl extends UnicastRemoteObject implements FeeDetailsDao
 {
+    //database connection
     Connection cn = DbConnection.myConnection();
 
+    //constructor
     public FeeDetailsImpl() throws RemoteException
     {
         super();
     }
 
+    /**
+     * add fee details into the Fee Detail table
+     * @param fd
+     * @throws RemoteException
+     */
     public void addFeeDet(FeeDetails fd) throws RemoteException
     {
         try
@@ -37,6 +44,11 @@ public class FeeDetailsImpl extends UnicastRemoteObject implements FeeDetailsDao
         }
     }
 
+    /**
+     * update fee details into the fee details table
+     * @param fd
+     * @throws RemoteException
+     */
     @Override
     public void updateFeeDet(FeeDetails fd)throws RemoteException
     {
@@ -59,6 +71,11 @@ public class FeeDetailsImpl extends UnicastRemoteObject implements FeeDetailsDao
         }
     }
 
+    /**
+     * delete fee details from the fee details table
+     * @param fd
+     * @throws RemoteException
+     */
     @Override
     public void deleteFeeDet(FeeDetails fd)throws RemoteException
     {
@@ -76,6 +93,11 @@ public class FeeDetailsImpl extends UnicastRemoteObject implements FeeDetailsDao
         }
     }
 
+    /**
+     * retrieve fee details from the fee dtails table
+     * @return
+     * @throws RemoteException
+     */
     public ResultSet getFeeDetails() throws RemoteException{
         try
         {
@@ -92,6 +114,12 @@ public class FeeDetailsImpl extends UnicastRemoteObject implements FeeDetailsDao
         return null;
     }
 
+    /**
+     * retreive fee details from fee details table by course
+     * @param course
+     * @return
+     * @throws RemoteException
+     */
     public ResultSet getFeeDetailsByCourse(String course) throws RemoteException{
         try
         {

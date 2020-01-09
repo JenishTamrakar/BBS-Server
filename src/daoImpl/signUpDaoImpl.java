@@ -12,11 +12,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class signUpDaoImpl extends UnicastRemoteObject implements signUpDao {
+
+    //database connection
     Connection cn = DbConnection.myConnection();
+
+    //constructor
     public signUpDaoImpl()throws RemoteException{
         super();
     }
 
+    /**
+     * check user id from user table
+     * @param user_id
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public ResultSet checkID(String user_id)throws RemoteException{
         try {

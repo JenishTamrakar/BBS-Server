@@ -11,12 +11,20 @@ import java.sql.*;
 
 public class AssignmentDaoImpl extends UnicastRemoteObject implements AssignmentDao
 {
+    //database connection
     Connection cn = DbConnection.myConnection();
 
+    //constructor
     public AssignmentDaoImpl() throws RemoteException
     {
         super();
     }
+
+    /**
+     * Insert the assignment details into the assignment table
+     * @param as
+     * @throws RemoteException
+     */
 
     public void addAssDet(Assignment as) throws RemoteException
     {
@@ -37,6 +45,11 @@ public class AssignmentDaoImpl extends UnicastRemoteObject implements Assignment
         }
     }
 
+    /**
+     * update assignment details into the assignment table
+     * @param as
+     * @throws RemoteException
+     */
     @Override
     public void updateAssDet(Assignment as)throws RemoteException
     {
@@ -58,6 +71,11 @@ public class AssignmentDaoImpl extends UnicastRemoteObject implements Assignment
         }
     }
 
+    /**
+     * delete assignment details from assignment table
+     * @param as
+     * @throws RemoteException
+     */
     @Override
     public void deleteAssDet(Assignment as)throws RemoteException
     {
@@ -74,6 +92,11 @@ public class AssignmentDaoImpl extends UnicastRemoteObject implements Assignment
         }
     }
 
+    /**
+     * fetch all the data from Assignment table
+     * @return
+     * @throws RemoteException
+     */
     public ResultSet getAssignDetails() throws RemoteException{
         try
         {
@@ -90,6 +113,13 @@ public class AssignmentDaoImpl extends UnicastRemoteObject implements Assignment
         return null;
     }
 
+    /**
+     * retrieve all data from assignment table by course and level
+     * @param course
+     * @param level
+     * @return
+     * @throws RemoteException
+     */
     public ResultSet getAssignDetailsByCourseAndLevel(String course, String level) throws RemoteException{
         try
         {
