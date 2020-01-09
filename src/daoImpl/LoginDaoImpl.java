@@ -1,3 +1,8 @@
+/**
+ * @author
+ * This is the implementation of the interface LoginDao.
+ */
+
 package daoImpl;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;

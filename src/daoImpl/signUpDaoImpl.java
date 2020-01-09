@@ -1,3 +1,8 @@
+/**
+ * @author
+ * This is the implementation of the interface signUpDao
+ */
+
 package daoImpl;
 
 import com.sun.rowset.CachedRowSetImpl;

@@ -1,3 +1,8 @@
+/**
+ * @author Rashim Joshi
+ * This is the implementation of the interface changePasswordDao
+ */
+
 package daoImpl;
 
 import bll.changePassword;

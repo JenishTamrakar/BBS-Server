@@ -1,3 +1,9 @@
+/**
+ * @author Rashim Joshi
+ * This is the interface for updating the user password.
+ */
+
+
 package dao;
 
 import bll.changePassword;

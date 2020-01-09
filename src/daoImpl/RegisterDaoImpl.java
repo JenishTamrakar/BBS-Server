@@ -1,3 +1,8 @@
+/**
+ * @author Roshan Shrestha
+ * This is the implementation of the interface RegisterDao.
+ */
+
 package daoImpl;
 
 import bll.Register;

@@ -1,3 +1,8 @@
+/**
+ * @author Roshan Shrestha
+ * This is the implementation of the interface EventDao.
+ */
+
 package daoImpl;
 
 import bll.Event;

@@ -1,3 +1,8 @@
+/**
+ * @author Jenish Tamrakar
+ * This is the implementation of the interface NoticeDao.
+ */
+
 package daoImpl;
 
 import bll.Notice;
