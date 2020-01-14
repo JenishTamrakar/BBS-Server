@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="bbs-server">
+    <output-path>$PROJECT_DIR$/out/artifacts/bbs_server</output-path>
+    <root id="archive" name="bbs-server.jar" />
+  </artifact>
+</component>

@@ -34,6 +34,13 @@ public class LoginDaoImpl extends UnicastRemoteObject implements LoginDao{
      * @return
      * @throws RemoteException
      */
+    /**
+     *
+     * @param user_id
+     * @param user_password
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public ResultSet checkUser(String user_id,String user_password) throws RemoteException{
         try {

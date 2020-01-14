@@ -24,6 +24,15 @@ public class Assignment implements Serializable
 
     private static final  long serialVersionUID=1L;
 
+    /**
+     * Constructor with parameters
+     * @param Ass_ID
+     * @param Ass_title
+     * @param Ass_level
+     * @param Ass_course
+     * @param Ass_unit
+     * @param Ass_date
+     */
     //Constructor with parameters
     public Assignment(String Ass_ID, String Ass_title, String Ass_level, String Ass_course, String Ass_unit, String Ass_date)
     {
